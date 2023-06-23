@@ -6,24 +6,36 @@ import matplotlib.pyplot as plt
 data_lenght = 0
 
 # Tableaux pour stocker les valeurs des colonnes
-longitude = []
+# première colonne est le client id et la deuxième le nombre d'achat
+client_purchase = []
+client_purchase_filtered = []
 
 # Total d'éléments
 total_house_median = 0
 
-with open('customers.csv', 'r') as file:
+with open('orders.csv', 'r') as file:
     csv_reader = csv.reader(file)
     
     for index, row in enumerate(csv_reader):
         data_lenght += 1
-        if index == 0:
-            print(row[0])
+        # if index == 0:
+        #     print(row[0])
+        #     print(row[1])
+        #     print(row[2])
+        #     print(row[3])
+        #     print(row[4])
+        #     print(row[5])
+        #     print(row[6])
+        #     print(row[7])
+
+        if index > 0 and index < 30 :
+            client_purchase.append([row[1]])
             print(row[1])
-            print(row[2])
-            print(row[3])
-
-        # if index > 0:
-
+            # for data in client_purchase:
+                # if row[1] == data[0]:
+                #     print(data[0])
+        
+    print(client_purchase)
         #     longitude.append(row[0])
         #     latitude.append(row[1])
         #     housing_median_age.append(float(row[2]))
@@ -55,7 +67,7 @@ with open('customers.csv', 'r') as file:
 # for data in housing_median_age:
 #     total_house_median += data
 
-# print("Nombre de données : " + str(data_lenght))
+print("Nombre de données totale : " + str(data_lenght))
 # print("Age moyen des maisons : " + str(total_house_median/len(longitude)) + " ans")
 # print("Total de maison supérieur à la moyenne d'âge : " + str(total_house_older_than_average))
 # print("Total de maison proche de la mer : " + str(total_near_bey))
